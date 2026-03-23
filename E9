@@ -1,0 +1,35 @@
+<input id="tit">
+<input id="gen">
+<input id="ano">
+<button onclick="addF()">Add</button>
+<button onclick="filtrarF()">Filtrar ação</button>
+<ul id="filmes"></ul>
+
+<script>
+let filmes=[]
+
+function addF(){
+    let t=document.getElementById("tit").value
+    let g=document.getElementById("gen").value
+    let a=document.getElementById("ano").value
+
+    filmes.push({titulo:t,genero:g,ano:a})
+    mostrarF(filmes)
+}
+
+function mostrarF(arr){
+    let ul=document.getElementById("filmes")
+    ul.innerHTML=""
+
+    arr.forEach(f=>{
+        let li=document.createElement("li")
+        li.innerText=f.titulo+" "+f.genero
+        ul.appendChild(li)
+    })
+}
+
+function filtrarF(){
+    let f=filmes.filter(x=>x.genero=="ação")
+    mostrarF(f)
+}
+</script>
