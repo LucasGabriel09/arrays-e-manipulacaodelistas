@@ -1,0 +1,31 @@
+<input id="editT">
+<button onclick="addE()">Add</button>
+<ul id="listE"></ul>
+
+<script>
+let listaE=[]
+
+function addE(){
+    let t=document.getElementById("editT").value
+    listaE.push(t)
+    mostrarE()
+}
+
+function editar(i){
+    let novo=prompt("novo valor")
+    listaE.splice(i,1,novo)
+    mostrarE()
+}
+
+function mostrarE(){
+    let ul=document.getElementById("listE")
+    ul.innerHTML=""
+
+    listaE.forEach((e,i)=>{
+        let li=document.createElement("li")
+        li.innerHTML=e+' <button onclick="editar('+i+')">Editar</button>'
+        ul.appendChild(li)
+    })
+}
+</script>
+
