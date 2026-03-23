@@ -1,0 +1,27 @@
+<input id="task">
+<button onclick="addTask()">Add</button>
+<ul id="tasks"></ul>
+
+<script>
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[]
+
+function addTask(){
+    let t=document.getElementById("task").value
+    tasks.push(t)
+    localStorage.setItem("tasks",JSON.stringify(tasks))
+    mostrarTasks()
+}
+
+function mostrarTasks(){
+    let ul=document.getElementById("tasks")
+    ul.innerHTML=""
+
+    tasks.forEach(t=>{
+        let li=document.createElement("li")
+        li.innerText=t
+        ul.appendChild(li)
+    })
+}
+
+mostrarTasks()
+</script>
