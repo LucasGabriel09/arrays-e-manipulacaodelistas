@@ -1,0 +1,29 @@
+<input id="item">
+<button onclick="addItem()">Adicionar</button>
+<ul id="lista"></ul>
+
+<script>
+let lista = []
+
+function addItem(){
+    let valor = document.getElementById("item").value
+    lista.push(valor)
+    mostrar()
+}
+
+function remover(i){
+    lista.splice(i,1)
+    mostrar()
+}
+
+function mostrar(){
+    let ul = document.getElementById("lista")
+    ul.innerHTML=""
+
+    lista.forEach((el,i)=>{
+        let li = document.createElement("li")
+        li.innerHTML = el + ' <button onclick="remover('+i+')">X</button>'
+        ul.appendChild(li)
+    })
+}
+</script>
