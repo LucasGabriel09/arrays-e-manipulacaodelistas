@@ -1,0 +1,28 @@
+<button onclick="addP()">Adicionar produto</button>
+<button onclick="remP()">Remover último</button>
+<ul id="car"></ul>
+
+<script>
+let carrinho=[]
+
+function addP(){
+    carrinho.push({nome:"Produto "+(carrinho.length+1)})
+    mostrarC()
+}
+
+function remP(){
+    carrinho.pop()
+    mostrarC()
+}
+
+function mostrarC(){
+    let ul=document.getElementById("car")
+    ul.innerHTML=""
+
+    carrinho.forEach(p=>{
+        let li=document.createElement("li")
+        li.innerText=p.nome
+        ul.appendChild(li)
+    })
+}
+</script>
