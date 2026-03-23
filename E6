@@ -1,0 +1,34 @@
+<button onclick="mostrarU()">Todos</button>
+<button onclick="maior()">+18</button>
+<ul id="users"></ul>
+
+<script>
+let users=[
+{nome:"Ana",idade:20},
+{nome:"Joao",idade:15},
+{nome:"Maria",idade:30}
+]
+
+function mostrarU(){
+    let ul=document.getElementById("users")
+    ul.innerHTML=""
+
+    users.forEach(u=>{
+        let li=document.createElement("li")
+        li.innerText=u.nome+" "+u.idade
+        ul.appendChild(li)
+    })
+}
+
+function maior(){
+    let f=users.filter(u=>u.idade>=18)
+    let ul=document.getElementById("users")
+    ul.innerHTML=""
+
+    f.forEach(u=>{
+        let li=document.createElement("li")
+        li.innerText=u.nome+" "+u.idade
+        ul.appendChild(li)
+    })
+}
+</script>
