@@ -1,0 +1,34 @@
+<input id="tarefa">
+<select id="prio">
+<option>alta</option>
+<option>baixa</option>
+</select>
+<button onclick="addT()">Add</button>
+<ul id="tarefas"></ul>
+
+<script>
+let tarefas=[]
+
+function addT(){
+    let t=document.getElementById("tarefa").value
+    let p=document.getElementById("prio").value
+
+    if(p=="alta"){
+        tarefas.unshift({titulo:t,prioridade:p})
+    } else {
+        tarefas.push({titulo:t,prioridade:p})
+    }
+
+    mostrarT()
+}
+
+function mostrarT(){
+    let ul=document.getElementById("tarefas")
+    ul.innerHTML=""
+
+    tarefas.forEach(e=>{
+        let li=document.createElement("li")
+        li.innerText=e.titulo+" - "+e.prioridade
+        ul.appendChild(li)
+    })
+}
