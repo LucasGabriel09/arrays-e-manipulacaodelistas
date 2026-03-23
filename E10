@@ -1,0 +1,33 @@
+<input id="jog">
+<input id="pts">
+<button onclick="addJ()">Add</button>
+<ul id="rank"></ul>
+
+<script>
+let jogadores=[]
+
+function addJ(){
+    let j=document.getElementById("jog").value
+    let p=document.getElementById("pts").value
+
+    jogadores.push({jogador:j,pontos:p})
+    mostrarR()
+}
+
+function mostrarR(){
+    let ul=document.getElementById("rank")
+    ul.innerHTML=""
+
+    let ordenado=jogadores.sort((a,b)=>b.pontos-a.pontos)
+
+    let pos=ordenado.map((e,i)=>{
+        return (i+1)+"º "+e.jogador+" - "+e.pontos
+    })
+
+    pos.forEach(t=>{
+        let li=document.createElement("li")
+        li.innerText=t
+        ul.appendChild(li)
+    })
+}
+</script>
