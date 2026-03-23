@@ -1,0 +1,18 @@
+<div id="prod"></div>
+
+<script>
+const produtos=[
+{nome:"Mouse",preco:50},
+{nome:"Teclado",preco:100},
+{nome:"Monitor",preco:800}
+]
+
+let desconto=produtos.map(p=>{
+    return {nome:p.nome,preco:p.preco*0.9}
+})
+
+let div=document.getElementById("prod")
+desconto.forEach(p=>{
+    div.innerHTML+=p.nome+" - "+p.preco+"<br>"
+})
+</script>
