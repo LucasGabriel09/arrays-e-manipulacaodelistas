@@ -1,0 +1,33 @@
+<input id="nomeA">
+<input id="notaA">
+<button onclick="addAluno()">Adicionar</button>
+<button onclick="filtrar()">Aprovados</button>
+<ul id="alunos"></ul>
+
+<script>
+let alunos=[]
+
+function addAluno(){
+    let n=document.getElementById("nomeA").value
+    let no=document.getElementById("notaA").value
+
+    alunos.push({nome:n,nota:no})
+    mostrarAlunos(alunos)
+}
+
+function mostrarAlunos(arr){
+    let ul=document.getElementById("alunos")
+    ul.innerHTML=""
+
+    arr.forEach(a=>{
+        let li=document.createElement("li")
+        li.innerText=a.nome+" - "+a.nota
+        ul.appendChild(li)
+    })
+}
+
+function filtrar(){
+    let f=alunos.filter(a=>a.nota>=7)
+    mostrarAlunos(f)
+}
+</script>
